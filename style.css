@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;700&display=swap');
+
+:root {
+  scroll-behavior: smooth;
+  --hue: 280;
+  --saturation: 75%;
+  --lighting: 50%;
+  --text-saturation: calc(var(--saturation) - 50%);
+  --text-lighting: calc(var(--lighting) - 30%);
+  --color-primary: hsl(var(--hue), var(--saturation), var(--lighting));
+  --text-color: hsl(var(--hue), var(--text-saturation), var(--text-lighting));
+}
+
+/*
+ * [Modified] Modern CSS Reset
+ * @link https://github.com/hankchizljaw/modern-css-reset
+*/
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  color: var(--text-color);
+  font-family: 'Noto Sans Mono', monospace;
+}
+
+/* Make images easier to work with */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Enhance readability of text */
+p {
+  max-width: 75ch;
+} 
+
+/* Remove defaults */
+a {
+  text-decoration: none;
+  --saturation: 100%;
+  --lighting: 50%;
+  color: hsl(var(--hue), var(--saturation), var(--lighting));
+}
+
+[class*=link] {
+  color: white;
+  padding: 1em;
+  background-color: var(--text-color);
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Make skip link invisible, source:  https://webaim.org/techniques/css/invisiblecontent/*/
+.skip-link {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  padding: 0.5em;
+}
+
+.skip-link:focus {
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  animation: 3s wobble linear infinite;
+}
+
+@keyframes wobble {
+  25% {
+    border-radius: 0 30% / 0 15%;
+  }
+
+  50% {
+    border-radius: 30% 0 / 15% 0;
+  }
+
+  75% {
+    border-radius: 0 50% / 0 30%;
+  }
+  100% {
+    border-radius: none;
+  }
+}
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1;
+  text-align: center;
+  color: hsl(calc(var(--hue) - 60), var(--saturation), var(--lighting));
+}
+
+/* Header */
+
+header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header > .container {
+  flex-grow: 1;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Main heading */
+h1 {
+  font-size: 6rem;
+  position: relative;
+  color: var(--color-primary);
+}
+
+h1::after {
+  content: '';
+  background-color: currentColor;
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -65%;
+  height: 30%;
+  transform: perspective(10rem) rotateX(60deg) translateY(-5rem);
+  filter: blur(1rem);
+  opacity: 0.7;
+}
+
+header  p {
+  text-align: center;
+}
+
+/* Github button */
+.link-github {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 1em;
+  border-radius: 99999999999999999px;
+}
+
+.link-github span {
+  display: grid;
+  place-items: center;
+}
+.link-github svg {
+  width: 1em;
+  height: 1em;
+  --hue: 60;
+  fill: hsla(var(--hue), var(--saturation), var(--lighting));
+  transition: transform 0.3s;
+}
+
+.link-github:is(:hover, :focus) svg {
+  animation: spin 1.5s;
+}
+
+@keyframes spin {
+
+  50% {
+    transform: perspective(1em) translateZ(0.5em) rotateX(181deg) rotateY(-181deg);
+  }
+
+  to {
+    transform: perspective(1em) translateZ(0) rotateX(360deg) rotateY(-360deg);
+  }
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
