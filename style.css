@@ -8,6 +8,7 @@
   --text-saturation: calc(var(--saturation) - 50%);
   --text-lighting: calc(var(--lighting) - 30%);
   --color-primary: hsl(var(--hue), var(--saturation), var(--lighting));
+  --color-primary-dark: hsl(var(--hue), var(--saturation), calc(var(--lighting) - 25%));
   --text-color: hsl(var(--hue), var(--text-saturation), var(--text-lighting));
 }
 
@@ -29,7 +30,9 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p,
+blockquote {
   margin: 0;
 }
 
@@ -41,6 +44,11 @@ body {
   text-rendering: optimizeSpeed;
   color: var(--text-color);
   font-family: 'Noto Sans Mono', monospace;
+}
+
+/* Gives every top level section margin besides the first one */
+body > *:not(.skip-link) + * {
+  margin-top: 3em;
 }
 
 /* Make images easier to work with */
@@ -58,7 +66,6 @@ p {
 a {
   text-decoration: none;
   --saturation: 100%;
-  --lighting: 50%;
   color: hsl(var(--hue), var(--saturation), var(--lighting));
 }
 
@@ -160,6 +167,7 @@ header::after {
   mix-blend-mode: overlay;
   clip-path: polygon(0 0, 100% 0, 50% 50%, 0 100%);
   opacity: 0.6;
+  pointer-events: none;
 }
 
 header > .container {
@@ -188,7 +196,7 @@ h1::after {
   height: 30%;
   transform: perspective(10rem) rotateX(60deg) translateY(-5rem);
   filter: blur(1rem);
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 header  p {
@@ -231,6 +239,56 @@ header  p {
   }
 }
 
+/* Nav */ 
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  --hue: 20;
+  background-color: hsl(var(--hue), var(--saturation), var(--lighting));
+  padding: 1em;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul a {
+  color: white;
+}
+
+/* Main */
+
+main {
+  padding-inline: 1em;
+}
+/* About */
+
+#about > section,
+#about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+#about > section > *:not(h2) {
+  background-color: var(--color-primary-dark);
+  color: white;
+  padding: 1em;
+}
+
+#about > section a {
+  color: hsl(calc(var(--hue) + 180), var(--saturation), var(--lighting));
+}
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   * {
