@@ -58,7 +58,8 @@ img {
 }
 
 /* Enhance readability of text */
-p {
+p,
+blockquote {
   max-width: 75ch;
 } 
 
