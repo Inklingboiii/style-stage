@@ -285,9 +285,25 @@ main {
 }
 
 #about > section > *:not(h2) {
-  background-color: var(--color-primary-dark);
+  background-color: hsl(var(--hue), var(--saturation), calc(var(--lighting) - 25%));
   color: white;
   padding: 1em;
+}
+
+#about > section > :nth-child(2) {
+  --hue: 230;
+}
+
+#about > section > :nth-child(3) {
+  --hue: 260;
+}
+
+#about > section > :nth-child(4) {
+  --hue: 290;
+}
+
+#about > section > :nth-child(5) {
+  --hue: 320;
 }
 
 #about > section a {
