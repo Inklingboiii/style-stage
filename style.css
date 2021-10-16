@@ -5,11 +5,17 @@
   --hue: 280;
   --saturation: 75%;
   --lighting: 50%;
+
   --text-saturation: calc(var(--saturation) - 50%);
   --text-lighting: calc(var(--lighting) - 30%);
+  --text-color: hsl(var(--hue), var(--text-saturation), var(--text-lighting));
+
   --color-primary: hsl(var(--hue), var(--saturation), var(--lighting));
   --color-primary-dark: hsl(var(--hue), var(--saturation), calc(var(--lighting) - 25%));
-  --text-color: hsl(var(--hue), var(--text-saturation), var(--text-lighting));
+  --color-secondary: hsl(calc(var(--hue) - 60), var(--saturation), var(--lighting));
+
+  --color-yellow: hsl(60, var(--saturation), var(--lighting));
+  --color-orange: hsl(20, var(--saturation), var(--lighting));
 }
 
 /*
@@ -147,7 +153,7 @@ h3,
 h4 {
   line-height: 1;
   text-align: center;
-  color: hsl(calc(var(--hue) - 60), var(--saturation), var(--lighting));
+  color: var(--color-secondary);
 }
 
 /* Header */
@@ -163,8 +169,7 @@ header::after {
   content: '';
   position: absolute;
   inset: 0;
-  --lighting: 20%;
-  background: linear-gradient(white, hsl(var(--hue), var(--saturation), var(--lighting)));
+  background: linear-gradient(white, var(--color-primary-dark));
   mix-blend-mode: overlay;
   clip-path: polygon(0 0, 100% 0, 50% 50%, 0 100%);
   opacity: 0.6;
@@ -220,8 +225,7 @@ header  p {
 .link-github svg {
   width: 1em;
   height: 1em;
-  --hue: 60;
-  fill: hsla(var(--hue), var(--saturation), var(--lighting));
+  fill: var(--color-yellow);
   transition: transform 0.3s;
 }
 
@@ -247,8 +251,7 @@ nav {
   left: 0;
   right: 0;
   z-index: 1;
-  --hue: 20;
-  background-color: hsl(var(--hue), var(--saturation), var(--lighting));
+  background-color: var(--color-orange);
   padding: 1em;
 }
 
