@@ -38,7 +38,8 @@ h4,
 h5,
 h6,
 p,
-blockquote {
+blockquote,
+ul {
   margin: 0;
 }
 
@@ -280,35 +281,61 @@ main {
 #about {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1em;
+  gap: 2em;
 }
 
+/* Targets all cards */
 #about > section > *:not(h2) {
   background-color: hsl(var(--hue), var(--saturation), calc(var(--lighting) - 25%));
   color: white;
   padding: 1em;
+  box-shadow: hsl(var(--hue), 25%, 75%) 0em 0em 0.5em 0.3em;
+  border-radius: 0.5em;
 }
 
 #about > section > :nth-child(2) {
   --hue: 230;
+  transform: perspective(3em) rotateX(1deg);
 }
 
 #about > section > :nth-child(3) {
   --hue: 260;
+  transform: perspective(1em) skewX(5deg);
 }
 
 #about > section > :nth-child(4) {
   --hue: 290;
+  transform: perspective(10em) rotateY(1deg);
 }
 
 #about > section > :nth-child(5) {
   --hue: 320;
+  transform: perspective(1em) skewY(1deg);
+}
+
+#about > section > :nth-child(6) {
+  --hue: 350;
 }
 
 #about > section a {
   color: hsl(calc(var(--hue) + 180), var(--saturation), var(--lighting));
 }
+
+#about > section > ul {
+  display: flex;
+  list-style-type: none;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  gap: 1em;
+}
+
+#about > section > ul > li {
+  flex-basis: 100%;
+  flex-shrink: 0;
+  text-align: center;
+  scroll-snap-align: start;
+}
+
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   * {
