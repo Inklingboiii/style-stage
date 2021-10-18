@@ -13,6 +13,7 @@
   --color-primary: hsl(var(--hue), var(--saturation), var(--lighting));
   --color-primary-dark: hsl(var(--hue), var(--saturation), calc(var(--lighting) - 25%));
   --color-secondary: hsl(calc(var(--hue) - 60), var(--saturation), var(--lighting));
+  --color-tertiary: hsl(calc(var(--hue) - 120), var(--saturation), var(--lighting));
 
   --color-yellow: hsl(60, var(--saturation), var(--lighting));
   --color-orange: hsl(20, var(--saturation), var(--lighting));
@@ -151,6 +152,10 @@ h4 {
   color: var(--color-secondary);
 }
 
+h3 {
+  color: var(--color-tertiary);
+}
+
 /* Header */
 
 header {
@@ -269,6 +274,10 @@ nav ul a {
 main {
   padding-inline: 1em;
 }
+
+main > .container > * + * {
+  margin-top: 3em;
+}
 /* About */
 
 #about > section,
@@ -329,6 +338,18 @@ main {
   text-align: center;
   scroll-snap-align: start;
 }
+
+/* Guidelines */
+#guidelines > section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  }
+
+  #guidelines > section > p:nth-of-type(1) {
+    text-align: center;
+  }
 
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
