@@ -84,13 +84,13 @@ a:not([class*=link]) {
   background: linear-gradient(currentColor, currentColor);
   background-repeat: no-repeat;
   background-position: bottom left;
-  background-size: 0% 0.1em;
+  background-size: 0% 0%;
   transition: background-size 0.35s cubic-bezier(0,1.5,1,1.5);
 }
 
 
 a:not([class*=link]):is(:hover, :focus) {
-  background-size: 100% 0.1em;
+  background-size: 100% 0.15em;
 }
 
 /* Button */
@@ -98,6 +98,14 @@ a:not([class*=link]):is(:hover, :focus) {
   color: white;
   padding: 1em;
   background-color: var(--text-color);
+  outline: 3px solid transparent;
+  outline-offset: 3px;
+  transition: outline-offset 0.3s ease-in, outline-color 0.3s ease-out;
+}
+
+[class*=link]:is(:hover, :focus) {
+  outline-color: white;
+  outline-offset: -0.5em;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -116,7 +124,7 @@ select {
   width: 1px;
   height: 1px;
   overflow: hidden;
-  padding: 0.5em;
+  padding: 1em;
 }
 
 .skip-link:focus {
