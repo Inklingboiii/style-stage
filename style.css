@@ -292,7 +292,9 @@ main > .container > * + * {
 #about {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2em;
+  width: 100%;
 }
 
 /* Targets all cards */
@@ -312,6 +314,8 @@ main > .container > * + * {
 #about > section > :nth-child(3) {
   --hue: 260;
   transform: perspective(1em) skewX(5deg);
+  width: 100%;
+  text-align: center;
 }
 
 #about > section > :nth-child(4) {
@@ -333,6 +337,7 @@ main > .container > * + * {
 }
 
 #about > section > ul {
+  width: 100%;
   display: flex;
   list-style-type: none;
   overflow-x: scroll;
