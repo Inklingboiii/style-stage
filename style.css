@@ -101,6 +101,7 @@ a:not([class*=link]):is(:hover, :focus) {
   outline: 3px solid transparent;
   outline-offset: 3px;
   transition: outline-offset 0.3s ease-in, outline-color 0.3s ease-out;
+  text-align: center;
 }
 
 [class*=link]:is(:hover, :focus) {
@@ -409,6 +410,26 @@ main > .container > * + * {
 
 #contribute ol li:nth-child(4)::after {
   --hue: 270;
+}
+
+#files > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 2em; 
+  position: relative;
+  background: white;
+}
+
+/* Pseudo-element as performant box-shadow animation*/
+#files > .container::after {
+  content: '';
+  position: absolute;
+  inset: -1em;
+  z-index: -1;
+  background-color: var(--text-color);
+  filter: blur(0.3em);
+  animation: wobble 20s infinite;
 }
 
 
