@@ -14,6 +14,7 @@
   --color-primary-dark: hsl(var(--hue), var(--saturation), calc(var(--lighting) - 25%));
   --color-secondary: hsl(calc(var(--hue) - 60), var(--saturation), var(--lighting));
   --color-tertiary: hsl(calc(var(--hue) - 120), var(--saturation), var(--lighting));
+  --color-quaternary: hsl(calc(var(--hue) - 180), var(--saturation), var(--lighting));
 
   --color-yellow: hsl(60, var(--saturation), var(--lighting));
   --color-orange: hsl(20, var(--saturation), var(--lighting));
@@ -65,6 +66,9 @@ img {
   max-width: 100%;
 }
 
+ul {
+  list-style-type: none;
+}
 /* Enhance readability of text */
 p,
 blockquote {
@@ -163,6 +167,10 @@ h4 {
 
 h3 {
   color: var(--color-tertiary);
+}
+
+h4 {
+  color: var(--color-quaternary);
 }
 
 /* Header */
@@ -269,7 +277,6 @@ nav ul {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -340,7 +347,6 @@ main > .container > * + * {
 #about > section > ul {
   width: 100%;
   display: flex;
-  list-style-type: none;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   gap: 1em;
@@ -425,14 +431,29 @@ main > .container > * + * {
 #files > .container::after {
   content: '';
   position: absolute;
-  inset: -1em;
+  inset: -0.5em;
   z-index: -1;
   background-color: var(--text-color);
   filter: blur(0.3em);
   animation: wobble 20s infinite;
 }
 
+/* Current styles */
+.profile > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}
 
+.profile ul {
+  background: conic-gradient(var(--color-orange), var(--color-yellow));
+  color: white;
+}
+
+.profile ul a {
+  color: black;
+}
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   * {
