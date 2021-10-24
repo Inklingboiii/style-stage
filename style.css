@@ -447,12 +447,38 @@ main > .container > * + * {
 }
 
 .profile ul {
-  background: conic-gradient(var(--color-orange), var(--color-yellow));
+  background: conic-gradient(var(--text-color), var(--color-primary-dark));
   color: white;
+  padding: 3em 1.5em
 }
 
 .profile ul a {
-  color: black;
+  color: var(--color-quaternary);
+}
+
+.profile > .container > a {
+  position: relative;
+  padding: 1em;
+  border: solid 1px;
+  /* Remove regular underline animation  */
+  background: transparent;
+  transition: unset;
+}
+
+.profile > .container > a:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-quaternary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s linear;
+}
+
+.profile > .container > a:is(:hover, :focus):before {
+  transform-origin: left;
+  transform: unset;
 }
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
