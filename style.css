@@ -471,7 +471,7 @@ main > .container > * + * {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--color-quaternary);
+  background: linear-gradient(90deg, var(--color-quaternary), var(--color-yellow));
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.35s linear;
