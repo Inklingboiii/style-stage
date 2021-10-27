@@ -481,6 +481,38 @@ main > .container > * + * {
   transform-origin: left;
   transform: unset;
 }
+
+/* Featured styles */
+
+.features {
+  position: relative;
+  perspective: 100em;
+  transform-style: preserve-3d;
+}
+
+.features > li {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: #ddd;
+  min-height: 30vh;
+  width: 50vw;
+}
+
+.features > li:nth-child(1) {
+  /* Divide the halved width by the tangent of the halved degrees rotated */
+  transform: translateZ(calc(25vw / 1.732)) rotateY(45deg);
+}
+
+.features > li:nth-child(2) {
+  transform: rotateY(120deg) translateZ(calc(25vw / 1.732));
+}
+
+.features > li:nth-child(3) {
+  transform: rotateY(240deg) translateZ(calc(25vw / 1.732));
+}
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   * {
