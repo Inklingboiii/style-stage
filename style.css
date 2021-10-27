@@ -180,9 +180,6 @@ header {
   display: flex;
   flex-direction: column;
   position: relative;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100%25' %3E%3Cpath d='M392.5,315Q325,380,233,409Q141,438,93,344Q45,250,92,153.5Q139,57,248,60.5Q357,64,408.5,157Q460,250,392.5,315Z' fill='azure'%3E%3C/path%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center top;
 }
 
 header::after {
