@@ -487,6 +487,7 @@ main > .container > * + * {
 .features {
   position: relative;
   perspective: 100em;
+  perspective-origin: 50% -10em;
   transform-style: preserve-3d;
 }
 
@@ -497,21 +498,28 @@ main > .container > * + * {
   inset: 0;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   background: #ddd;
-  min-height: 30vh;
-  width: 50vw;
+  height: 142px;
+  width: 470px;
+   /* Divide the halved width by the tangent of the halved 120 degrees rotated */
+--distance: calc(117px / 1.732);
+--x-1-rotation: 75deg;
+--x-2-rotation: 75deg;
+--x-3-rotation: 75deg;
 }
 
 .features > li:nth-child(1) {
-  /* Divide the halved width by the tangent of the halved degrees rotated */
-  transform: translateZ(calc(25vw / 1.732)) rotateY(45deg);
+  transform: translateZ(var(--distance)) rotateX(var(--x-1-rotation));
+  background: red
 }
 
 .features > li:nth-child(2) {
-  transform: rotateY(120deg) translateZ(calc(25vw / 1.732));
+  transform: rotateY(120deg) translateZ(var(--distance)) rotateX(var(--x-2-rotation));
+  background: green;
 }
 
 .features > li:nth-child(3) {
-  transform: rotateY(240deg) translateZ(calc(25vw / 1.732));
+  transform: rotateY(240deg) translateZ(var(--distance)) rotateX(var(--x-3-rotation));
+  background: blue;
 }
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
