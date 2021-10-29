@@ -487,8 +487,14 @@ main > .container > * + * {
 .features {
   position: relative;
   perspective: 100em;
-  perspective-origin: 50% -10em;
+  perspective-origin: 50% 1em;
   transform-style: preserve-3d;
+  min-height: var(--size);
+  /*animation: spin-y 10s linear infinite;*/
+  --size: 50vmin;
+  /* Divide the halved width by the tangent of the halved 120 degrees rotated */
+  --distance: calc((var(--size) / 2) / 1.732);
+  --x-rotation: 35deg;
 }
 
 .features > li {
@@ -497,29 +503,43 @@ main > .container > * + * {
   position: absolute;
   inset: 0;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  background: #ddd;
-  height: 142px;
-  width: 470px;
-   /* Divide the halved width by the tangent of the halved 120 degrees rotated */
---distance: calc(117px / 1.732);
---x-1-rotation: 75deg;
---x-2-rotation: 75deg;
---x-3-rotation: 75deg;
+  height: var(--size);
+  width: calc(var(--size) * 2);
+  margin-inline: auto;
 }
 
+  /* Base face */
+  .features::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    height: var(--size);
+    width: calc(var(--size) * 2);
+    margin-inline: auto;
+    background: yellow;
+    transform: translateZ(var(--distance)) rotateX(90deg);
+  }
+
 .features > li:nth-child(1) {
-  transform: translateZ(var(--distance)) rotateX(var(--x-1-rotation));
+  transform: translateZ(var(--distance)) rotateX(var(--x-rotation));
   background: red
 }
 
 .features > li:nth-child(2) {
-  transform: rotateY(120deg) translateZ(var(--distance)) rotateX(var(--x-2-rotation));
+  transform: rotateY(120deg) translateZ(var(--distance)) rotateX(var(--x-rotation));
   background: green;
 }
 
 .features > li:nth-child(3) {
-  transform: rotateY(240deg) translateZ(var(--distance)) rotateX(var(--x-3-rotation));
+  transform: rotateY(240deg) translateZ(var(--distance)) rotateX(var(--x-rotation));
   background: blue;
+}
+
+@keyframes spin-y {
+  to {
+    transform: rotateY(360deg);
+  }
 }
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
