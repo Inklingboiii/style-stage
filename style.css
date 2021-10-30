@@ -487,8 +487,8 @@ main > .container > * + * {
 .features {
   position: relative;
   perspective: 100em;
-  perspective-origin: 50% 1em;
   transform-style: preserve-3d;
+  transform: rotateX(1deg);
   min-height: var(--size);
   /*animation: spin-y 10s linear infinite;*/
   --size: 50vmin;
