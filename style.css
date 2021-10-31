@@ -519,6 +519,7 @@ main > .container > * + * {
     margin-inline: auto;
     background: yellow;
     transform: translateZ(var(--distance)) rotateX(90deg);
+    transform-origin: 50% 100%;
   }
 
 .features > li:nth-child(1) {
