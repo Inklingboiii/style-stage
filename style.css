@@ -519,10 +519,7 @@ main > .container > * + * {
     width: calc(var(--size) * 2);
     margin-inline: auto;
     background: yellow;
-    transform: rotateX(90deg) translateZ(var(--distance)) ;
-    /* This puts it to much to the bottom, 
-       since it doesn't account for the other faces to be rotated */
-    transform-origin:  50% 100%;
+    transform: rotateX(90deg) translateZ(calc(var(--size) * -1 / 2));
   }
 
   /* Note: order of transformations matter */
