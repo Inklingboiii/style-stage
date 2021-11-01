@@ -488,7 +488,7 @@ main > .container > * + * {
   position: relative;
   perspective: 100em;
   transform-style: preserve-3d;
-  transform: rotateX(1deg);
+  transform: rotateX(90deg);
   min-height: var(--size);
   /*animation: spin-y 10s linear infinite;*/
   --size: 50vmin;
@@ -504,6 +504,7 @@ main > .container > * + * {
   inset: 0;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   height: var(--size);
+  /* Double the width so the faces can reach each other when rotated */
   width: calc(var(--size) * 2);
   margin-inline: auto;
 }
@@ -518,10 +519,13 @@ main > .container > * + * {
     width: calc(var(--size) * 2);
     margin-inline: auto;
     background: yellow;
-    transform: translateZ(var(--distance)) rotateX(90deg);
-    transform-origin: 50% 100%;
+    transform: rotateX(90deg) translateZ(var(--distance)) ;
+    /* This puts it to much to the bottom, 
+       since it doesn't account for the other faces to be rotated */
+    transform-origin:  50% 100%;
   }
 
+  /* Note: order of transformations matter */
 .features > li:nth-child(1) {
   transform: translateZ(var(--distance)) rotateX(var(--x-rotation));
   background: red
