@@ -488,9 +488,9 @@ main > .container > * + * {
   position: relative;
   perspective: 100em;
   transform-style: preserve-3d;
-  transform: rotateX(90deg);
+  transform:  rotateY(0);
   min-height: var(--size);
-  /*animation: spin-y 10s linear infinite;*/
+  animation: spin-y 10s linear infinite;
   --size: 50vmin;
   /* Divide the halved width by the tangent of the halved 120 degrees rotated */
   --distance: calc((var(--size) / 2) / 1.732);
@@ -503,39 +503,24 @@ main > .container > * + * {
   position: absolute;
   inset: 0;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: radial-gradient(var(--color-tertiary), var(--color-quaternary));
   height: var(--size);
   /* Double the width so the faces can reach each other when rotated */
   width: calc(var(--size) * 2);
   margin-inline: auto;
 }
 
-  /* Base face */
-  .features::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    height: var(--size);
-    width: calc(var(--size) * 2);
-    margin-inline: auto;
-    background: yellow;
-    transform: rotateX(90deg) translateZ(calc(var(--size) * -1 / 2));
-  }
-
   /* Note: order of transformations matter */
 .features > li:nth-child(1) {
   transform: translateZ(var(--distance)) rotateX(var(--x-rotation));
-  background: red
 }
 
 .features > li:nth-child(2) {
   transform: rotateY(120deg) translateZ(var(--distance)) rotateX(var(--x-rotation));
-  background: green;
 }
 
 .features > li:nth-child(3) {
   transform: rotateY(240deg) translateZ(var(--distance)) rotateX(var(--x-rotation));
-  background: blue;
 }
 
 @keyframes spin-y {
@@ -552,5 +537,3 @@ main > .container > * + * {
     scroll-behavior: auto !important;
   }
 }
-
-
