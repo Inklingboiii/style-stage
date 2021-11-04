@@ -484,14 +484,19 @@ main > .container > * + * {
 
 /* Featured styles */
 
+#styles > .container {
+  /* Hide overflow caused by the rotating tetrahedron */
+  overflow: hidden;
+}
 .features {
   position: relative;
   perspective: 100em;
   transform-style: preserve-3d;
-  transform:  rotateY(0);
+  /* Make the text clearer  */
+  transform:  translateZ(var(--distance));
   min-height: var(--size);
   animation: spin-y 10s linear infinite;
-  --size: 50vmin;
+  --size: clamp(10em, calc(15vw + 5em), 20em);
   /* Divide the halved width by the tangent of the halved 120 degrees rotated */
   --distance: calc((var(--size) / 2) / 1.732);
   --x-rotation: 35deg;
@@ -503,7 +508,7 @@ main > .container > * + * {
   position: absolute;
   inset: 0;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  background: radial-gradient(var(--color-tertiary), var(--color-quaternary));
+  background: radial-gradient(var(--color-tertiary), var(--color-secondary));
   height: var(--size);
   /* Double the width so the faces can reach each other when rotated */
   width: calc(var(--size) * 2);
@@ -524,7 +529,20 @@ main > .container > * + * {
 }
 
 @keyframes spin-y {
-  to {
+  23% {
+    transform: rotateY(0deg);
+  }
+
+  33%,
+  56% {
+    transform: rotateY(120deg);
+  }
+
+  66%,
+  90% {
+      transform: rotateY(240deg);
+  }
+  100% {
     transform: rotateY(360deg);
   }
 }
