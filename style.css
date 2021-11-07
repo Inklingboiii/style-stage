@@ -12,12 +12,13 @@
 
   --color-primary: hsl(var(--hue), var(--saturation), var(--lighting));
   --color-primary-dark: hsl(var(--hue), var(--saturation), calc(var(--lighting) - 25%));
-  --color-secondary: hsl(calc(var(--hue) - 60), var(--saturation), var(--lighting));
-  --color-tertiary: hsl(calc(var(--hue) - 120), var(--saturation), var(--lighting));
-  --color-quaternary: hsl(calc(var(--hue) - 180), var(--saturation), var(--lighting));
-
-  --color-yellow: hsl(60, var(--saturation), var(--lighting));
-  --color-orange: hsl(20, var(--saturation), var(--lighting));
+  --color-60: hsl(calc(var(--hue) - 60), var(--saturation), var(--lighting));
+  --color-60-dark: hsl(calc(var(--hue) - 60), var(--saturation), calc(var(--lighting) - 25%));
+  --color-120: hsl(calc(var(--hue) - 120), var(--saturation), var(--lighting));
+  --color-180: hsl(calc(var(--hue) - 180), var(--saturation), var(--lighting));
+  --color-220: hsl(calc(var(--hue) - 220), var(--saturation), var(--lighting));
+  --color-280: hsl(calc(var(--hue) - 280), var(--saturation), var(--lighting));
+  --color-340: hsl(calc(var(--hue) - 340), var(--saturation), var(--lighting));
 }
 
 /*
@@ -162,15 +163,15 @@ h3,
 h4 {
   line-height: 1;
   text-align: center;
-  color: var(--color-secondary);
+  color: var(--color-60);
 }
 
 h3 {
-  color: var(--color-tertiary);
+  color: var(--color-120);
 }
 
 h4 {
-  color: var(--color-quaternary);
+  color: var(--color-180);
 }
 
 /* Header */
@@ -243,7 +244,7 @@ header  p {
 .link-github svg {
   width: 1em;
   height: 1em;
-  fill: var(--color-yellow);
+  fill: var(--color-220);
   transition: transform 0.3s;
 }
 
@@ -269,7 +270,7 @@ nav {
   left: 0;
   right: 0;
   z-index: 1;
-  background-color: var(--color-orange);
+  background-color: var(--color-primary-dark);
   padding: 1em;
 }
 
@@ -454,7 +455,7 @@ main > .container > * + * {
 }
 
 .profile ul a {
-  color: var(--color-quaternary);
+  color: var(--color-180);
 }
 
 .profile > .container > a {
@@ -471,7 +472,7 @@ main > .container > * + * {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(90deg, var(--color-quaternary), var(--color-yellow));
+  background: linear-gradient(45deg, var(--color-120), var(--color-220));
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.35s linear;
@@ -515,17 +516,17 @@ main > .container > * + * {
   /* Note: order of transformations matter */
 .features > li:nth-child(1) {
   transform: translateZ(var(--distance));
-  background-color:var(--color-tertiary);
+  background-color:var(--color-120);
 }
 
 .features > li:nth-child(2) {
   transform: rotateY(120deg) translateZ(var(--distance));
-  background-color: var(--color-quaternary);
+  background-color: var(--color-180);
 }
 
 .features > li:nth-child(3) {
   transform: rotateY(240deg) translateZ(var(--distance));
-  background-color: var(--color-yellow);
+  background-color: var(--color-220);
 }
 
 @keyframes spin-y {
