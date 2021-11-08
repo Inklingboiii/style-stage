@@ -9,13 +9,21 @@
   --text-saturation: calc(var(--saturation) - 50%);
   --text-lighting: calc(var(--lighting) - 30%);
   --text-color: hsl(var(--hue), var(--text-saturation), var(--text-lighting));
+  --text-color-light:  white;
+
+  --link-color: hsl(var(--hue), 100%, var(--lighting));
+  --link-color-light: hsl(var(--hue), 100%, calc(var(--lighting) + 25%));
+
+  --background-color: white;
+  --background-color-dark: hsl(var(--hue), 30%, 10%);
 
   --color-primary: hsl(var(--hue), var(--saturation), var(--lighting));
   --color-primary-dark: hsl(var(--hue), var(--saturation), calc(var(--lighting) - 25%));
   --color-60: hsl(calc(var(--hue) - 60), var(--saturation), var(--lighting));
-  --color-60-dark: hsl(calc(var(--hue) - 60), var(--saturation), calc(var(--lighting) - 25%));
+  --color-60-dark: hsl(calc(var(--hue) - 60), var(--saturation), calc(var(--lighting) - 15%));
   --color-120: hsl(calc(var(--hue) - 120), var(--saturation), var(--lighting));
   --color-180: hsl(calc(var(--hue) - 180), var(--saturation), var(--lighting));
+  --color-180-dark: hsl(calc(var(--hue) - 180), var(--saturation), calc(var(--lighting) - 20%));
   --color-220: hsl(calc(var(--hue) - 220), var(--saturation), var(--lighting));
   --color-280: hsl(calc(var(--hue) - 280), var(--saturation), var(--lighting));
   --color-340: hsl(calc(var(--hue) - 340), var(--saturation), var(--lighting));
@@ -76,11 +84,10 @@ blockquote {
   max-width: 75ch;
 } 
 
-/* Remove defaults */
 a {
+  /* Remove defaults */
   text-decoration: none;
-  --saturation: 100%;
-  color: hsl(var(--hue), var(--saturation), var(--lighting));
+  color: var(--link-color);
 }
 
 /* Give links that are not buttons an underline on focus/hover */
@@ -171,7 +178,7 @@ h3 {
 }
 
 h4 {
-  color: var(--color-180);
+  color: var(--color-180-dark);
 }
 
 /* Header */
@@ -189,7 +196,7 @@ header::after {
   inset: 0;
   z-index: 2;
   background: linear-gradient(white, var(--color-primary-dark));
-  mix-blend-mode: overlay;
+  mix-blend-mode: color-burn;
   clip-path: polygon(0 0, 100% 0, 50% 50%, 0 100%);
   opacity: 0.6;
   pointer-events: none;
@@ -226,6 +233,11 @@ h1::after {
 
 header  p {
   text-align: center;
+}
+
+header h2 {
+  /* Increase contrast  */
+  color: var(--color-60-dark);
 }
 
 /* Github button */
@@ -289,8 +301,15 @@ nav ul a {
 
 /* Main */
 
+/* Make foregound colors light and background colors dark  */
 main {
   padding-inline: 1em;
+  background: var(--background-color-dark);
+  color: var(--text-color-light);
+}
+
+main a {
+  color: var(--link-color-light);
 }
 
 main > .container > * + * {
@@ -401,7 +420,6 @@ main > .container > * + * {
   left: 50%;
   top: 50%;
   transform: scale(3) rotate(-20deg) translate(-50%, -50%);
-  z-index: -1;
 }
 
 #contribute ol li:nth-child(1)::after {
@@ -426,20 +444,9 @@ main > .container > * + * {
   gap: 1em;
   padding: 2em; 
   position: relative;
-  background: white;
+  border: solid 3px currentColor;
+  animation: wobble 20s;
 }
-
-/* Pseudo-element as performant box-shadow animation*/
-#files > .container::after {
-  content: '';
-  position: absolute;
-  inset: -0.5em;
-  z-index: -1;
-  background-color: var(--text-color);
-  filter: blur(0.3em);
-  animation: wobble 20s infinite;
-}
-
 /* Current styles */
 .profile > .container {
   display: flex;
