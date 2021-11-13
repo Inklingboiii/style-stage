@@ -304,9 +304,17 @@ nav ul a {
 
 /* Make foregound colors light and background colors dark  */
 main {
-  padding-inline: 1em;
+  padding: 10em 1em;
   background: var(--background-color-dark);
   color: var(--text-color-light);
+  clip-path: polygon(62.5% 0, 75% 2.5%, 87.5% 0, 100% 2.5%, 100% 97.5%, 87.5% 100%, 75% 97.5%, 62.5% 100%, 50% 97.5%, 37.5% 100%, 25% 97.5%, 12.5% 100%, 0 97.5%, 0 2.5%, 12.5% 0, 25% 2.5%, 37.5% 0, 50% 2.5%);
+  animation: clip-path-waves 3s linear infinite alternate;
+}
+
+@keyframes clip-path-waves {
+  to {
+    clip-path: polygon(62.5% 2.5%, 75% 0%, 87.5% 2.5%, 100% 0%, 100% 100%, 87.5% 97.5%, 75% 100%, 62.5% 97.5%, 50% 100%, 37.5% 97.5%, 25% 100%, 12.5% 97.5%, 0% 100%, 0% 0%, 12.5% 2.5%, 25% 0%, 37.5% 2.5%, 50% 0%);
+  }
 }
 
 main a {
