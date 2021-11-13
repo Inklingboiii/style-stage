@@ -87,6 +87,7 @@ blockquote {
 a {
   /* Remove defaults */
   text-decoration: none;
+  --saturation: 100%;
   color: var(--link-color);
 }
 
@@ -336,33 +337,33 @@ main > .container > * + * {
 }
 
 #about > section > :nth-child(2) {
-  --hue: 230;
+  --hue: 160;
   transform: perspective(3em) rotateX(1deg);
 }
 
 #about > section > :nth-child(3) {
-  --hue: 260;
+  --hue: 190;
   transform: perspective(1em) skewX(5deg);
   width: 100%;
   text-align: center;
 }
 
 #about > section > :nth-child(4) {
-  --hue: 290;
+  --hue: 220;
   transform: perspective(10em) rotateY(1deg);
 }
 
 #about > section > :nth-child(5) {
-  --hue: 320;
+  --hue: 250;
   transform: perspective(1em) skewY(1deg);
 }
 
 #about > section > :nth-child(6) {
-  --hue: 350;
+  --hue: 280;
 }
 
 #about > section a {
-  color: hsl(calc(var(--hue) + 180), var(--saturation), var(--lighting));
+  color: hsl(calc(var(--hue) - 90), var(--saturation), var(--lighting));
 }
 
 #about > section > ul {
@@ -479,7 +480,7 @@ main > .container > * + * {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(45deg, var(--color-120), var(--color-220));
+  background: linear-gradient(45deg, var(--color-120), var(--background-color));
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.35s linear;
