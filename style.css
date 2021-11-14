@@ -67,6 +67,7 @@ body {
 /* Gives every top level section margin besides the first one */
 body > *:not(.skip-link) + * {
   margin-top: 3em;
+  padding-inline: 1em;
 }
 
 /* Make images easier to work with */
@@ -502,10 +503,14 @@ main > .container > * + * {
 /* Featured styles */
 
 #styles > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
   /* Hide overflow caused by the rotating tetrahedron */
   overflow: hidden;
 }
 .features {
+  padding: 0;
   position: relative;
   perspective: 100em;
   transform-style: preserve-3d;
@@ -521,28 +526,31 @@ main > .container > * + * {
 .features > li {
   display: grid;
   place-items: center;
+  text-align: center;
   position: absolute;
   inset: 0;
   height: var(--size);
   /* Double the width so the faces can reach each other when rotated */
   width: calc(var(--size) * 2);
   margin-inline: auto;
+  background-color: hsla(0deg, 100%, 100%, 0.75);
 }
 
   /* Note: order of transformations matter */
 .features > li:nth-child(1) {
   transform: translateZ(var(--distance));
-  background-color:var(--color-120);
 }
 
 .features > li:nth-child(2) {
   transform: rotateY(120deg) translateZ(var(--distance));
-  background-color: var(--color-180);
 }
 
 .features > li:nth-child(3) {
   transform: rotateY(240deg) translateZ(var(--distance));
-  background-color: var(--color-220);
+}
+
+.link-allstyles {
+  align-self: center;
 }
 
 @keyframes spin-y {
@@ -563,6 +571,29 @@ main > .container > * + * {
     transform: rotateY(360deg);
   }
 }
+
+/* Footer */
+
+.page-footer > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.page-footer > .container> p:nth-child(1) {
+  text-align: center;
+}
+
+.page-footer > .container > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.page-footer > .container > ul  a {
+  border-radius: 999999999999px;
+}
+
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -570,5 +601,22 @@ main > .container > * + * {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Remove tetrahedron */
+  #styles > .container {
+    overflow: unset;
+  }
+
+  #styles .features > li {
+    position: unset;
+    transform: unset;
+    --size: auto;
+  }
+
+  .features > li > span {
+    width: 90%;
+  display: flex;
+  justify-content: space-between;
   }
 }
