@@ -455,7 +455,7 @@ main > .container > * + * {
   padding: 2em; 
   position: relative;
   border: solid 3px currentColor;
-  animation: wobble 20s;
+  animation: wobble 20s infinite;
 }
 /* Current styles */
 .profile > .container {
