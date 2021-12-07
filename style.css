@@ -244,7 +244,7 @@ header h2 {
 
 /* Github button */
 .link-github {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   flex-direction: row-reverse;
   gap: 1em;
@@ -574,9 +574,11 @@ main > .container > * + * {
 
 /* Footer */
 
-.page-footer > .container {
+.page-footer > .container,
+.page-footer > .container > ul {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2em;
 }
 
@@ -584,10 +586,9 @@ main > .container > * + * {
   text-align: center;
 }
 
-.page-footer > .container > ul {
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
+.page-footer > .container > ul > li:nth-child(3) {
+  /* Balances out the spacing  */
+  margin-bottom:  1em;
 }
 
 .page-footer > .container > ul  a {
