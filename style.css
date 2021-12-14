@@ -594,6 +594,22 @@ main > .container > * + * {
   border-radius: 999999999999px;
 }
 
+
+/* Change layout for desktop */
+@media (min-width: 45em) {
+  /* Remove horizontal scroller  */
+  #about > section > ul {
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(auto-fit, 15em);
+    overflow-x: unset;
+
+  }
+
+  #about > section > ul > li {
+    text-align: left;
+  }
+}
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   * {
