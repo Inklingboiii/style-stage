@@ -207,9 +207,8 @@ header::after {
 header > .container {
   flex-grow: 1;
   display: flex;
-  gap: 1em;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -376,7 +375,7 @@ main > .container > * + * {
 }
 
 #about > section > ul {
-  width: 100%;
+  width: 90%;
   display: flex;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
@@ -582,7 +581,7 @@ main > .container > * + * {
   gap: 2em;
 }
 
-.page-footer > .container> p:nth-child(1) {
+.page-footer > .container> p {
   text-align: center;
 }
 
@@ -617,7 +616,7 @@ main > .container > * + * {
 
   .features > li > span {
     width: 90%;
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
   }
 }
